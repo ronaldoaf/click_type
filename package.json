@@ -1,0 +1,16 @@
+{
+  "name": "click_type",
+  "version": "1.0.0",
+  "description": "Clicador e Digitador para gambiarras",
+  "main": "click_type.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Seu Cuca",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "robotjs": "^0.6.0"
+  }
+}
