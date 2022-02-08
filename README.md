@@ -10,7 +10,7 @@ Use os binários já compilados para:
 
 * [Windows](https://github.com/ronaldoaf/click_type/releases/download/1.0.0/click_type-win.exe)
 
+<p>  </p>
+<p>  </p>
 
-
-
-ou baixe o código fonte e últize o NodeJS 
+ou baixe o código fonte e ultize o NodeJS para executar
