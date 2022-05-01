@@ -1,16 +1,18 @@
 {
   "name": "click_type",
-  "version": "1.0.0",
-  "description": "Clicador e Digitador para gambiarras",
+  "version": "2.0.0",
+  "description": "",
   "main": "click_type.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "Seu Cuca",
+  "author": "",
   "license": "ISC",
   "dependencies": {
+    "@nut-tree/nut-js": "^2.0.1",
     "express": "^4.17.2",
-    "robotjs": "^0.6.0"
+    "jsta": "^1.0.0",
+    "jstat": "^1.9.5",
+    "windmouse": "^1.0.5"
   }
 }
