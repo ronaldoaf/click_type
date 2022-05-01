@@ -15,9 +15,9 @@ Podem ver os exemplos na imagem a cima
 # Como executar
 Use os binários já compilados para:
 
-* [Linux](https://github.com/ronaldoaf/click_type/releases/download/1.0.0/click_type-linux)
+* [Linux](https://github.com/ronaldoaf/click_type/releases/download/2.0.0/click_type-linux)
 
-* [Windows](https://github.com/ronaldoaf/click_type/releases/download/1.0.0/click_type-win.exe)
+* [Windows](https://github.com/ronaldoaf/click_type/releases/download/2.0.0/click_type-win.exe)
 
 ou baixe o código fonte e ultize o NodeJS para executar
 
