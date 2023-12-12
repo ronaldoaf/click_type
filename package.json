@@ -1,6 +1,6 @@
 {
   "name": "click_type",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "",
   "main": "click_type.js",
   "scripts": {
@@ -9,9 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@nut-tree/nut-js": "^2.0.1",
+    "robotjs":"^0.6.0",
     "express": "^4.17.2",
-    "jsta": "^1.0.0",
     "jstat": "^1.9.5",
     "windmouse": "^1.0.5"
   }
