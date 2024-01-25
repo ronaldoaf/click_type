@@ -1,12 +1,5 @@
-//const { keyboard, mouse, Point } = require("@nut-tree/nut-js");
- 
-//mouse.config.mouseSpeed=200
-//keyboard.config.autoDelayMs=100;
- 
-var robot = require("robotjs");
-robot.setMouseDelay(2);
+const { keyboard, mouse, Point } = require("@nut-tree/nut-js");
 
- 
 const express = require('express');
 
 const app=express();
@@ -18,7 +11,8 @@ function sleep(ms) {
 }
 
 
-
+mouse.config.mouseSpeed=200
+keyboard.config.autoDelayMs=100;
 
 
 const randomNormal=(x_min, x_max)=>{
@@ -65,73 +59,79 @@ const mouseMove=async(X, Y)=>{
 
 
 app.get('/click_area', async(req, res)=>{
-    const {x1,x2,y1,y2}=req.query;
+	const {x1,x2,y1,y2}=req.query;
    const X=randomNormal(Number(x1), Number(x2));
    const Y=randomNormal(Number(y1), Number(y2));
-   
-   robot.moveMouse(X, Y );
+
+   await mouseMove(X, Y);
    await sleep(1000);
-   
-   robot.mouseClick();
-   
+
+   await mouse.leftClick();
+
    console.log([x1,x2,y1,y2]);
-    res.send(`console.log("x:${X} y:${Y}")`);
-}); 
+	res.send(`console.log("x:${X} y:${Y}")`);
+});	
 
 
 app.get('/scroll', async(req, res)=>{
-    const {y}=req.query;
+	const {y}=req.query;
 
    await mouse.scrollDown(Number(y));
-   
-    res.send(`console.log("y:${y}")`);
-}); 
+
+	res.send(`console.log("y:${y}")`);
+});	
 
 
 
-app.get('/click', (req, res)=>{
-    const mouse=robot.getMousePos();
-    const {x,y}=req.query;
-    robot.moveMouse(Number(x), Number(y) );
-    robot.mouseClick();
-    robot.moveMouse(mouse.x, mouse.y );
+app.get('/click', async(req, res)=>{
+	const ponto_incial=await mouse.getPosition();
+	const {x,y}=req.query;
+	const ponto_final=new Point(Number(x),Number(y));
+   await mouse.setPosition(ponto_final);
 
-    res.send(`console.log("x:${x} y:${y}")`);
-}); 
+   await mouse.leftClick();
+   await mouse.setPosition(ponto_incial);
 
-
-
-app.get('/move', (req, res)=>{
-    const {x,y}=req.query;
-    robot.moveMouse(Number(x), Number(y) );
-    //robot.mouseClick();
-    res.send(`console.log("x:${x} y:${y}")`);
-}); 
+	res.send(`console.log("x:${x} y:${y}")`);
+});	
 
 
+app.get('/move', async(req, res)=>{
+	const {x,y}=req.query;
 
-app.get('/type', (req, res)=>{
-    const {string}=req.query;
-    robot.typeString(string);
-    res.send(`console.log("string:${string}")`);
-});
+   await mouseMove(Number(x),Number(y));
+   /*
+	const ponto_final=new Point(Number(x),Number(y));
+   await mouse.setPosition(ponto_final);
+   */
+	res.send(`console.log("x:${x} y:${y}")`);
+});	
+
+
+
+app.get('/type', async(req, res)=>{
+	const {str}=req.query;
+   await keyboard.type(str);
+   console.log(str);
+	res.send(`console.log("str:${str}")`);
+});	
 
 
 let token_state='free';
 
 app.get('/token/state', async(req, res)=>{
    res.send(`localStorage.token_state='${token_state}';`);
-}); 
+});	
 
 app.get('/token/hold', async(req, res)=>{
    token_state='hold';
    setTimeout(()=> token_state='free', 30*1000);
    res.send(`localStorage.token_state='${token_state}';`);
-}); 
+});	
 app.get('/token/free', async(req, res)=>{
    token_state='free';
    res.send(`localStorage.token_state='${token_state}';`);
-}); 
+});	
 
 
 app.listen(1313);
