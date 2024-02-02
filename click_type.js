@@ -2,7 +2,11 @@ const { keyboard, mouse, Point } = require("@nut-tree/nut-js");
 
 const express = require('express');
 
+const express = require('express');
+const cors=require('cors');
 const app=express();
+app.use(cors())
+
 const WindMouse = require("windmouse");
 const jStat =require('jstat');
 
