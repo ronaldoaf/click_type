@@ -9,9 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "robotjs":"^0.6.0",
+    "@nut-tree/nut-js": "^2.0.1",
+    "cors": "^2.8.5",
     "express": "^4.17.2",
-    "jstat": "^1.9.5",
-    "windmouse": "^1.0.5"
+    "ghost-cursor": "^1.1.19",
+    "jstat": "^1.9.5"
   }
 }
